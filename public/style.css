@@ -1,0 +1,227 @@
+/* public/style.css - The Next Level (Same as before) */
+
+:root {
+    --neon-blue: #00eaff;
+    --neon-pink: #ff00ff;
+    --dark-bg: #100b16;
+    --card-bg: rgba(255, 255, 255, 0.05); /* Semi-transparent for glass effect */
+    --font-main: 'Poppins', sans-serif;
+    --font-heading: 'Orbitron', sans-serif; /* Futuristic font */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; 
+    color: #f0f0f0;
+    font-family: var(--font-main);
+}
+
+/* --- Animated Background Mesh (Grid/Warp effect) --- */
+.background-mesh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 234, 255, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, #1f1429 0%, #100b16 50px);
+    opacity: 0.8;
+    z-index: 1;
+    animation: pulseBg 30s infinite alternate;
+}
+@keyframes pulseBg {
+    from { background-size: 100% 100%; }
+    to { background-size: 150% 150%; }
+}
+
+/* --- Form Card (Glassmorphism) --- */
+.form-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 40px;
+    width: 90%;
+    max-width: 550px;
+    z-index: 10;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    animation: entryFade 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes entryFade {
+    from { opacity: 0; transform: translateY(50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- Typography --- */
+.form-title {
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+.gradient-text {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Improved Glitch Effect */
+.glitch-text {
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+    animation: glitchText 5s infinite;
+}
+@keyframes glitchText {
+    0%, 100% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); }
+    10% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--neon-blue); }
+    20% { text-shadow: 2px -2px var(--neon-pink), -2px 2px var(--neon-blue); }
+}
+
+.form-subtitle {
+    margin-bottom: 30px;
+    color: #bbb;
+    font-size: 0.9em;
+}
+
+/* --- Input Styling (Floating Label + Neon Border) --- */
+.form-group {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    padding: 18px 15px 10px; 
+    color: #f0f0f0;
+    font-size: 1em;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    outline: none;
+    -webkit-appearance: none; 
+    appearance: none;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Pulsing Neon Glow on Focus */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue), 0 0 5px var(--neon-pink) inset;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: #aaa;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease all;
+}
+
+/* Label up-shift */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label,
+.select-group select:focus ~ label,
+.select-group select:valid ~ label {
+    top: 10px; 
+    left: 10px;
+    font-size: 0.75em;
+    color: var(--neon-pink);
+    transform: translateY(0);
+}
+
+/* Custom Select Arrow Styling */
+.select-group .custom-arrow {
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    color: var(--neon-blue);
+    pointer-events: none;
+    transition: transform 0.3s;
+}
+.select-group select:focus + .custom-arrow {
+    transform: rotate(180deg);
+    color: var(--neon-pink);
+}
+
+/* --- Highly Animated Submit Button --- */
+.submit-btn {
+    /* Dual Neon Glow Gradient */
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    border: none;
+    color: var(--dark-bg);
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: 1.5px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 10px var(--neon-blue);
+    width: 100%;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-pink);
+}
+
+/* Shimmer Effect on Button Hover */
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 30%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    transition: left 0.6s;
+}
+.submit-btn:hover::before {
+    left: 150%;
+}
+
+/* --- Loading State Feedback --- */
+.loading-state {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: var(--neon-blue);
+    font-family: var(--font-heading);
+    opacity: 0;
+    transition: opacity 0.5s;
+    text-shadow: 0 0 5px var(--neon-blue);
+    display: none; /* Initially hidden */
+}
+.loading-state.visible {
+    opacity: 1;
+    display: block;
+    animation: glowPulse 1.5s infinite alternate;
+}
+@keyframes glowPulse {
+    from { text-shadow: 0 0 5px var(--neon-blue); }
+    to { text-shadow: 0 0 15px var(--neon-pink), 0 0 8px var(--neon-blue); }
+}

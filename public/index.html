@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborate with @xfahadofficial</title>
+    <!-- Fonts for Futuristic look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-mesh"></div> 
+
+    <div class="form-card">
+        <!-- Next-Level Animated Title -->
+        <h1 class="form-title">
+        <span class="glitch-text">xfahadofficial Collab / Service Form</span>
+        </h1>
+        <p class="form-subtitle">Let's build something extraordinary. Fill the form, enter the next level.</p>
+
+        <form id="collaborationForm" action="/submit-collaboration-form" method="POST">
+            
+            <div class="form-group">
+                <input type="text" id="name" name="name" required placeholder=" ">
+                <label for="name">Your Name / Agency Name</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" id="Instagram Handle" name="id" required placeholder="@ ">
+                <label for="id">Your Instagram ID</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder=" ">
+                <label for="email">Primary Contact Email</label>
+            </div>
+
+            <div class="form-group select-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Service Selection - (What is your mission?)</option>
+                    <option value="Advanced-Web"> Instagram Collaboration</option>
+                    <option value="Futuristic-Design"> Brand/ Graphic Design</option>
+                    <option value="Media-Campaign"> Video Editing </option>
+                    <option value="Consultation"> Futuristic Web Development</option>
+                </select>
+                <div class="custom-arrow">▽</div>
+            </div>
+
+            <div class="form-group">
+                <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                <label for="message">Describe Your Vision / Project Scope</label>
+            </div>
+
+            <!-- Highly Animated Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+                INITIATE CONTACT & GOTO @xfahadofficial
+            </button>
+            
+        </form>
+        <div id="loading-message" class="loading-state">Redirecting...</div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
